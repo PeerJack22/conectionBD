@@ -23,10 +23,8 @@ public class form1 {
                     Connection con = DriverManager.getConnection(url,user,password);
                     System.out.println("Se ha conectado con la base de datos");
                     Statement stmt = con.createStatement();
-                    String query = "SELECT * FROM  estudiantes where cedula =?";
+                    String query = "SELECT * FROM  estudiantes where cedula = "+parametro;
 
-                    PreparedStatement pst = con.prepareStatement(query);
-                    pst.setString(1,parametro);
 
                     ResultSet rs = stmt.executeQuery(query);
                     while(rs.next()){
