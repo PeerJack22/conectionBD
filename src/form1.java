@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
+
 
 public class form1 {
     private JTextField textLogin;
@@ -13,31 +13,18 @@ public class form1 {
         ingresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = "jdbc:mysql://localhost:3306/test";
-                String user = "root";
-                String password = "123456";
+
+                String user = textLogin.getText();
+                String password = new String(passwordField1.getPassword());
 
 
-                try{
-                    String parametro = textLogin.getText();
-                    Connection con = DriverManager.getConnection(url,user,password);
-                    System.out.println("Se ha conectado con la base de datos");
-                    Statement stmt = con.createStatement();
-                    String query = "SELECT * FROM  estudiantes where cedula = "+parametro;
-
-
-                    ResultSet rs = stmt.executeQuery(query);
-                    while(rs.next()){
-                        System.out.println(rs.getString("cedula"));
-                        System.out.println(rs.getString("nombre"));
-                        System.out.println(rs.getString("b1"));
-                        System.out.println(rs.getString("b2"));
-                    }
-                    con.close();
-
-                } catch (SQLException e1) {
-                    throw new RuntimeException(e1);
+                if (user.equals(user) && password.equals(password)) {
+                    form2 nuevaVentana = new form2();
+                    nuevaVentana.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario o contaseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+
             }
         });
     }
