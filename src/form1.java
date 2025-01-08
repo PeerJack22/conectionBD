@@ -13,16 +13,17 @@ public class form1 {
         ingresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String user = "root";
+                String password = "12345";
+                String usert = textLogin.getText();
+                String passwordt = new String(passwordField1.getPassword());
 
-                String user = textLogin.getText();
-                String password = new String(passwordField1.getPassword());
 
-
-                if (user.equals(user) && password.equals(password)) {
+                if (usert.equals(user) && passwordt.equals(password)) {
                     form2 nuevaVentana = new form2();
                     nuevaVentana.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Usuario o contaseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Acceso denegado. Usuario o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
